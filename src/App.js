@@ -4,6 +4,8 @@ import axios from 'axios';
 import Image from './components/Image';
 import Info from './components/Info';
 
+import './styles.css';
+
 const App = () => {
   const [clicked, setClicked] = React.useState(false);
   const [arts, setArts] = React.useState([]);

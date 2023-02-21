@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.Art {
+  width: 600px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.Art:hover {
+  transform: scale(1.1);
+}
+
+.Info {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.Info h3 {
+  font-size: 30px;
+  margin: 0;
+}
+.Info:hover {
+  transform: scale(1.1);
+}
