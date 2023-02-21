@@ -24,12 +24,12 @@ const App = () => {
     fetchArt();
   }, []);
 
-  const onClickMain = () => {
-    setClicked(!clicked);
+  async function onClickMain() {
     {
-      clicked && fetchArt();
+      clicked && (await fetchArt());
     }
-  };
+    setClicked(!clicked);
+  }
 
   return (
     <div className="App">
