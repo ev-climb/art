@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Image from './components/Image';
 import Info from './components/Info';
+import Logo from './components/Logo';
 
 import './styles.css';
 
@@ -35,8 +36,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="content" onClick={() => onClickMain()}>
-        {clicked ? <Info arts={arts} /> : <Image arts={arts} />}
+      <div className="wrapper">
+        <Logo clicked={clicked} />
+        <div className="content" onClick={() => onClickMain()}>
+          {clicked ? <Info arts={arts} /> : <Image arts={arts} />}
+        </div>
       </div>
     </div>
   );

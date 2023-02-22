@@ -1,16 +1,42 @@
+body {
+  margin: 0;
+}
+
 .App {
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  align-items: center;
+  height: 800px;
+  background-color: aliceblue;
+}
+
+.wrapper {
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  border-radius: 20px;
+}
+
+.content {
+  width: 60%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .Art {
-  width: 600px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  box-shadow: 0px 3px 12px 4px rgb(0 0 0 / 68%);
 }
 .Art:hover {
   transform: scale(1.1);
+  box-shadow: 0px 3px 20px 8px rgb(0 0 0 / 68%);
 }
 
 .Info {
@@ -22,6 +48,7 @@
   font-family: sans-serif;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  justify-content: center;
 }
 .Info h3 {
   font-size: 30px;
@@ -29,4 +56,74 @@
 }
 .Info:hover {
   transform: scale(1.1);
+}
+
+.logo {
+  width: 150px;
+  height: 30px;
+  background-color: white;
+  font-family: IBM Plex Serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 70px;
+  border: 1px solid #040404;
+}
+
+.logo-left {
+  text-align: center;
+  width: 50%;
+  position: relative;
+}
+
+.logo-left span {
+  left: 13px;
+  top: 4px;
+  position: absolute;
+}
+
+.logo-right {
+  width: 72px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  align-self: center;
+}
+
+.logo-left-animation-on {
+  animation-name: logo-left-animation-on;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.logo-right-animation-on {
+  animation-name: logo-right-animation-on;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes logo-left-animation-on {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes logo-right-animation-on {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
