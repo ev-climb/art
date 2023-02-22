@@ -41,6 +41,7 @@ const App = () => {
         <div className="content" onClick={() => onClickMain()}>
           {clicked ? <Info arts={arts} /> : <Image arts={arts} />}
         </div>
+        <span className="copyright">Ⓒ Evseev</span>
       </div>
     </div>
   );
