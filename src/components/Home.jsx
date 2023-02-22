@@ -4,9 +4,42 @@ import axios from 'axios';
 import Image from './Image';
 import Info from './Info';
 
+// const Home = ({ onClickMain, clicked, setClicked }) => {
+//   const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/arts';
+//   const [arts, setArts] = React.useState([]);
+
+//   async function fetchArt() {
+//     try {
+//       const [artsRes] = await Promise.all([axios.get(API_URL)]);
+//       setArts(artsRes.data[Math.floor(Math.random() * artsRes.data.length)]);
+//     } catch (err) {
+//       alert('Ошибка запроса данных :(');
+//       console.log(err);
+//     }
+//   }
+
+//   React.useEffect(() => {
+//     fetchArt();
+//   }, []);
+
+//   async function onClickMain() {
+//     {
+//       clicked && (await fetchArt());
+//     }
+//     setClicked(!clicked);
+//   }
+//   return (
+//     <div className="content" onClick={() => onClickMain()}>
+//       {clicked ? <Info arts={arts} /> : <Image arts={arts} />}
+//     </div>
+//   );
+// };
+
+// export default Home;
 const Home = ({ onClickMain, clicked, setClicked }) => {
   const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/arts';
   const [arts, setArts] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   async function fetchArt() {
     try {
@@ -15,6 +48,8 @@ const Home = ({ onClickMain, clicked, setClicked }) => {
     } catch (err) {
       alert('Ошибка запроса данных :(');
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -28,11 +63,11 @@ const Home = ({ onClickMain, clicked, setClicked }) => {
     }
     setClicked(!clicked);
   }
+
   return (
-    <div className="content" onClick={() => onClickMain()}>
-      {clicked ? <Info arts={arts} /> : <Image arts={arts} />}
+    <div className={`content ${loading ? 'loading' : ''}`} onClick={() => onClickMain()}>
+      {clicked ? <Info arts={arts} /> : <Image arts={arts} setLoading={setLoading} />}
     </div>
   );
 };
-
 export default Home;
