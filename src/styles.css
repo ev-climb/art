@@ -7,6 +7,11 @@ a {
   text-decoration: none;
   color: unset;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
 .App {
   display: flex;
@@ -19,13 +24,15 @@ a {
 .wrapper {
   width: 80%;
   height: 80%;
-  background-color: #9190d1;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   border-radius: 20px;
+  overflow: hidden;
+  background-image: url(../public/img/main.jpg);
+  background-size: cover;
 }
 
 .menu {
@@ -36,7 +43,7 @@ a {
   margin: 0;
   list-style-type: none;
   font-family: sans-serif;
-  color: lightgray;
+  color: white;
   font-weight: 200;
 }
 .menu li {
@@ -45,7 +52,7 @@ a {
   transition: all 0.3s ease-in-out;
 }
 .menu li:hover {
-  color: black;
+  color: rgb(254, 206, 255);
   text-decoration: underline;
 }
 
@@ -76,6 +83,9 @@ a {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   justify-content: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
 }
 .Info h3 {
   font-size: 30px;
@@ -83,6 +93,9 @@ a {
 }
 .Info:hover {
   transform: scale(1.1);
+}
+.Info p {
+  line-height: 1.7;
 }
 
 .logo {
@@ -178,6 +191,11 @@ a {
   font-family: 'Rock Salt', cursive;
   font-size: 12px;
   text-decoration: underline;
+  color: white;
+  cursor: pointer;
+}
+.copyright:hover {
+  color: rgb(254, 206, 255);
 }
 .loading {
   position: relative;
@@ -201,4 +219,39 @@ a {
   to {
     transform: rotate(360deg);
   }
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.settingsImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url(../public/img/settings.png);
+  display: flex;
+  justify-content: center;
+}
+.settingsImage ul {
+  display: flex;
+  margin-top: 10px;
+  column-gap: 80px;
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin-top: 200px;
+}
+.settingsImage select {
+  cursor: pointer;
+  height: 27px;
+  width: 120px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
 }
