@@ -8,18 +8,18 @@ const Settings = () => {
         <ul>
           <li>
             <select id="year-select">
-              <option value="Oll years">Oll years</option>
+              <option value="All years">All years</option>
               <option value="&lt;1500">&lt; 1500</option>
               <option value="1500-1600">1500 - 1600</option>
               <option value="1600-1700">1600 - 1700</option>
               <option value="1700-1800">1700 - 1800</option>
               <option value="1800-1900">1800 - 1900</option>
-              <option value="&gt;1900">&gt; 1900</option>
+              <option value="1900&lt;">1900 &lt;</option>
             </select>
           </li>
           <li>
             <select id="style-select">
-              <option value="Oll-styles">Oll styles</option>
+              <option value="All-styles">All styles</option>
               <option value="renaissance">Renaissance</option>
               <option value="mannerism">Mannerism</option>
               <option value="baroque">Baroque</option>
@@ -32,7 +32,7 @@ const Settings = () => {
           </li>
           <li>
             <select id="artist-select">
-              <option value="Oll-artist">Oll artist</option>
+              <option value="All-artist">All artist</option>
               <option value="leonardo-da-vinci">Leonardo da Vinci</option>
               <option value="vincent-van-gogh">Vincent van Gogh</option>
               <option value="pablo-picasso">Pablo Picasso</option>

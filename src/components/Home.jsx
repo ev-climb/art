@@ -12,6 +12,7 @@ const Home = ({ onClickMain, clicked, setClicked }) => {
 
   async function fetchArt() {
     try {
+      setLoading(true);
       const [artsRes] = await Promise.all([axios.get(API_URL)]);
       setArts(artsRes.data[Math.floor(Math.random() * artsRes.data.length)]);
     } catch (err) {
@@ -39,6 +40,8 @@ const Home = ({ onClickMain, clicked, setClicked }) => {
         <Loading />
       ) : clicked ? (
         <Info arts={arts} />
+      ) : loading ? (
+        <Loading />
       ) : (
         <Image arts={arts} setLoading={setLoading} />
       )}
