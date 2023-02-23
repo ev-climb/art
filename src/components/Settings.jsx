@@ -1,13 +1,20 @@
 import React from 'react';
 import '../styles.css';
 
-const Settings = () => {
+const Settings = ({ selectedYear, setSelectedYear, handleSelectChange }) => {
   return (
     <div className="settings">
       <div className="settingsImage">
         <ul>
           <li>
-            <select id="year-select">
+            <select
+              id="year-select"
+              value={selectedYear}
+              onChange={(event) => {
+                setSelectedYear(event.target.value);
+                handleSelectChange(event);
+              }}
+            >
               <option value="All years">All years</option>
               <option value="&lt;1500">&lt; 1500</option>
               <option value="1500-1600">1500 - 1600</option>

@@ -10,6 +10,14 @@ import './styles.css';
 
 const App = () => {
   const [clicked, setClicked] = React.useState(false);
+  const [selectedYear, setSelectedYear] = React.useState(
+    localStorage.getItem('selectedYear') || 'All years',
+  );
+  const handleSelectChange = (event) => {
+    const selectedValue = event.target.value;
+    localStorage.setItem('selectedYear', selectedValue);
+  };
+  console.log(selectedYear);
 
   return (
     <div className="App">
@@ -25,8 +33,20 @@ const App = () => {
         </ul>
         <Logo clicked={clicked} />
         <Routes>
-          <Route path="/" element={<Home clicked={clicked} setClicked={setClicked} />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route
+            path="/"
+            element={<Home clicked={clicked} setClicked={setClicked} selectedYear={selectedYear} />}
+          />
+          <Route
+            path="/settings"
+            element={
+              <Settings
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
+                handleSelectChange={handleSelectChange}
+              />
+            }
+          />
           <Route path="/about" element={<About />} />
         </Routes>
         <span className="copyright">Ⓒ Evseev</span>

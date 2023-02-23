@@ -5,15 +5,21 @@ import Image from './Image';
 import Info from './Info';
 import Loading from './Loading';
 
-const Home = ({ onClickMain, clicked, setClicked }) => {
-  const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/arts';
+const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
+  const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/';
   const [arts, setArts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-
   async function fetchArt() {
     try {
       setLoading(true);
-      const [artsRes] = await Promise.all([axios.get(API_URL)]);
+      const [artsRes] = await Promise.all([
+        axios.get(
+          `${API_URL}arts?${
+            selectedYear && (selectedYear !== 'All years' ? `years=${selectedYear}` : '')
+          }`,
+        ),
+      ]);
+      console.log(artsRes);
       setArts(artsRes.data[Math.floor(Math.random() * artsRes.data.length)]);
     } catch (err) {
       alert('Ошибка запроса данных :(');
