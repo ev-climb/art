@@ -20,6 +20,15 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
     year: ':-(',
     years: '',
   };
+  const lastArt = {
+    title: 'Благодарим за просмотр!',
+    artist: 'Пока на этом всё',
+    url: '/img/end.jpg',
+    description:
+      'Вы просмотрели всю подборку. Измените настройки поиска или просмотрите коллекцию заново.',
+    year: ':-',
+    years: '',
+  };
 
   //Прежний рабочий вариант
   // async function fetchArt() {
@@ -94,7 +103,7 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
       setUsedArts([]);
       filteredArts = allArts;
       setLoading(false);
-      setArts(errorArt);
+      setArts(lastArt);
       return;
     }
     const randomArt = filteredArts[Math.floor(Math.random() * filteredArts.length)];
