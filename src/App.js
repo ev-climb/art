@@ -13,11 +13,9 @@ const App = () => {
   const [selectedYear, setSelectedYear] = React.useState(
     localStorage.getItem('selectedYear') || 'All years',
   );
-  const handleSelectChange = (event) => {
-    const selectedValue = event.target.value;
-    localStorage.setItem('selectedYear', selectedValue);
-  };
-  console.log(selectedYear);
+  const [selectedStyle, setSelectedStyle] = React.useState(
+    localStorage.getItem('selectedStyle') || 'All styles',
+  );
 
   return (
     <div className="App">
@@ -43,7 +41,8 @@ const App = () => {
               <Settings
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
-                handleSelectChange={handleSelectChange}
+                selectedStyle={selectedStyle}
+                setSelectedStyle={setSelectedStyle}
               />
             }
           />
