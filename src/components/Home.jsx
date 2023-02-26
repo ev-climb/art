@@ -20,6 +20,51 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
     year: ':-(',
     years: '',
   };
+
+  //Прежний рабочий вариант
+  // async function fetchArt() {
+  //   try {
+  //     setLoading(true);
+  //     const [artsRes] = await Promise.all([
+  //       axios.get(
+  //         `${API_URL}arts?${
+  //           selectedYear && (selectedYear !== 'All years' ? `years=${selectedYear}` : '')
+  //         }`,
+  //       ),
+  //     ]);
+
+  //     if (allArts.length === 0) {
+  //       setAllArts(artsRes.data);
+  //     }
+
+  //     const availableArts = artsRes.data.filter(
+  //       (art) => !usedArts.some((usedArt) => usedArt.title === art.title),
+  //     );
+  //     console.log(usedArts, 'usedArts');
+  //     console.log(availableArts, 'availableArts');
+  //     console.log(allArts, 'allArts');
+
+  //     const randomArt = availableArts.length
+  //       ? availableArts[Math.floor(Math.random() * availableArts.length)]
+  //       : errorArt;
+
+  //     setUsedArts((prevUsedArts) => [...prevUsedArts, randomArt]);
+
+  //     setArts(randomArt);
+
+  //     if (availableArts.length === 0) {
+  //       setUsedArts([]);
+  //       setArts(errorArt);
+  //       setLoading(false);
+  //     }
+  //   } catch (err) {
+  //     alert('Ошибка запроса данных :(');
+  //     console.log(err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
   async function fetchArt() {
     try {
       setLoading(true);
@@ -30,30 +75,8 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
           }`,
         ),
       ]);
-
       if (allArts.length === 0) {
         setAllArts(artsRes.data);
-      }
-
-      const availableArts = artsRes.data.filter(
-        (art) => !usedArts.some((usedArt) => usedArt.title === art.title),
-      );
-      console.log(usedArts, 'usedArts');
-      console.log(availableArts, 'availableArts');
-      console.log(allArts, 'allArts');
-
-      const randomArt = availableArts.length
-        ? availableArts[Math.floor(Math.random() * availableArts.length)]
-        : errorArt;
-
-      setUsedArts((prevUsedArts) => [...prevUsedArts, randomArt]);
-
-      setArts(randomArt);
-
-      if (availableArts.length === 0) {
-        setUsedArts([]);
-        setArts(errorArt);
-        setLoading(false);
       }
     } catch (err) {
       alert('Ошибка запроса данных :(');
@@ -63,39 +86,41 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
     }
   }
 
-  //     setAvailableArts(
-  //       artsRes.data.filter((art) => !usedArts.some((usedArt) => usedArt.title === art.title)),
-  //     );
-
-  //     console.log(usedArts, 'usedArts');
-  //     console.log(availableArts, 'availableArts');
-
-  //     const randomArt = availableArts.length
-  //       ? availableArts[Math.floor(Math.random() * availableArts.length)]
-  //       : errorArt;
-
-  //     setUsedArts((prevUsedArts) => [...prevUsedArts, randomArt]);
-
-  //     setArts(randomArt);
-  //   } catch (err) {
-  //     alert('Ошибка запроса данных :(');
-  //     console.log(err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
+  async function getArt() {
+    let filteredArts = allArts.filter(
+      (art) => !usedArts.some((usedArt) => usedArt.title === art.title),
+    );
+    if (filteredArts.length === 0) {
+      setUsedArts([]);
+      filteredArts = allArts;
+      setLoading(false);
+      setArts(errorArt);
+      return;
+    }
+    const randomArt = filteredArts[Math.floor(Math.random() * filteredArts.length)];
+    setUsedArts((prevUsedArts) => [...prevUsedArts, randomArt]);
+    setArts(randomArt);
+    setLoading(false);
+    console.log(usedArts, 'usedArts');
+    console.log(filteredArts, 'filteredArts');
+    console.log(allArts, 'allArts');
+  }
 
   React.useEffect(() => {
     fetchArt();
   }, []);
 
-  async function onClickMain() {
-    clicked && (await fetchArt());
+  React.useEffect(() => {
+    if (allArts.length != 0) getArt();
+  }, [allArts]);
+
+  function handleClickMain() {
+    clicked && getArt();
     setClicked(!clicked);
   }
 
   return (
-    <div className={`content ${loading ? 'loading' : ''}`} onClick={() => onClickMain()}>
+    <div className={`content ${loading ? 'loading' : ''}`} onClick={() => handleClickMain()}>
       {loading ? (
         <Loading />
       ) : clicked ? (
@@ -108,4 +133,5 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
     </div>
   );
 };
+
 export default Home;

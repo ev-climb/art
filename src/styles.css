@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  background-color: black;
 }
 a {
   text-decoration: none;
@@ -18,7 +19,6 @@ ul {
   justify-content: center;
   align-items: center;
   height: 800px;
-  background-color: black;
 }
 
 .wrapper {
