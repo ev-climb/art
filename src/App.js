@@ -17,7 +17,7 @@ const App = () => {
     localStorage.getItem('selectedStyle') || 'All styles',
   );
   const [selectedArtist, setSelectedArtist] = React.useState(
-    localStorage.getItem('selectedStyle') || 'All styles',
+    localStorage.getItem('selectedArtist') || 'All styles',
   );
 
   return (
