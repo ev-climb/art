@@ -33,7 +33,14 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home clicked={clicked} setClicked={setClicked} selectedYear={selectedYear} />}
+            element={
+              <Home
+                clicked={clicked}
+                setClicked={setClicked}
+                selectedYear={selectedYear}
+                selectedStyle={selectedStyle}
+              />
+            }
           />
           <Route
             path="/settings"

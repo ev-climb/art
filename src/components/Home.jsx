@@ -5,7 +5,7 @@ import Image from './Image';
 import Info from './Info';
 import Loading from './Loading';
 
-const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
+const Home = ({ clicked, setClicked, selectedYear, selectedStyle }) => {
   const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/';
   const [arts, setArts] = React.useState([]);
   const [allArts, setAllArts] = React.useState([]);
@@ -37,7 +37,7 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
         axios.get(
           `${API_URL}arts?${
             selectedYear && (selectedYear !== 'All years' ? `years=${selectedYear}` : '')
-          }`,
+          }${selectedStyle && (selectedStyle !== 'All styles' ? `&style=${selectedStyle}` : '')}`,
         ),
       ]);
       if (allArts.length === 0) {
@@ -56,10 +56,10 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
       (art) => !usedArts.some((usedArt) => usedArt.title === art.title),
     );
     if (filteredArts.length === 0) {
+      setArts(lastArt);
       setUsedArts([]);
       filteredArts = allArts;
       setLoading(false);
-      setArts(lastArt);
       return;
     }
     const randomArt = filteredArts[Math.floor(Math.random() * filteredArts.length)];
@@ -76,7 +76,11 @@ const Home = ({ onClickMain, clicked, setClicked, selectedYear }) => {
   }, []);
 
   React.useEffect(() => {
-    if (allArts.length != 0) getArt();
+    if (allArts.length != 0) {
+      getArt();
+    } else {
+      setArts(lastArt);
+    }
   }, [allArts]);
 
   function handleClickMain() {
