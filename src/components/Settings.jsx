@@ -87,7 +87,14 @@ import React from 'react';
 import Select from 'react-select';
 import '../styles.css';
 
-const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedStyle }) => {
+const Settings = ({
+  selectedYear,
+  setSelectedYear,
+  selectedStyle,
+  setSelectedStyle,
+  selectedArtist,
+  setSelectedArtist,
+}) => {
   const yearOptions = [
     { value: 'All years', label: 'All years' },
     { value: '<1500', label: '<1500' },
@@ -97,7 +104,6 @@ const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedSty
     { value: '1800-1900', label: '1800-1900' },
     { value: '1900<', label: '1900<' },
   ];
-
   const styleOptions = [
     { value: 'All styles', label: 'All styles' },
     { value: 'avantgarde', label: 'Avant-garde' },
@@ -118,16 +124,61 @@ const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedSty
     { value: 'suprematism', label: 'Suprematism' },
   ];
   const artistOptions = [
-    { value: 'All-artist', label: 'All artist' },
-    { value: 'leonardo-da-vinci', label: 'Leonardo da Vinci' },
-    { value: 'vincent-van-gogh', label: 'Vincent van Gogh' },
-    { value: 'pablo-picasso', label: 'Pablo Picasso' },
-    { value: 'claude-monet', label: 'Claude Monet' },
-    { value: 'salvador-dali', label: 'Salvador Dali' },
-    { value: 'rembrandt-van-rijn', label: 'Rembrandt van Rijn' },
-    { value: 'edvard-munch', label: 'Edvard Munch' },
-    { value: 'jackson-pollock', label: 'Jackson Pollock' },
+    { value: 'All artists', label: 'All artists' },
+    { value: 'Пабло Пикассо', label: 'Пабло Пикассо' },
+    { value: 'Казимир Малевич', label: 'Казимир Малевич' },
+    { value: 'Марсель Дюшан', label: 'Марсель Дюшан' },
+    { value: 'Барнетт Ньюмен', label: 'Барнетт Ньюмен' },
+    { value: 'Ричард Гамильтон', label: 'Ричард Гамильтон' },
+    { value: 'Дэн Флавин', label: 'Дэн Флавин' },
+    { value: 'Джефф Кунс', label: 'Джефф Кунс' },
+    { value: 'Трэйси Эмин', label: 'Трэйси Эмин' },
+    { value: 'Олафур Элиассон', label: 'Олафур Элиассон' },
+    { value: 'Майк Келли', label: 'Майк Келли' },
+    { value: 'Леонардо да Винчи', label: 'Леонардо да Винчи' },
+    { value: 'Микеланджело', label: 'Микеланджело' },
+    { value: 'Рафаэль Санти', label: 'Рафаэль Санти' },
+    { value: 'Эдвард Мунк', label: 'Эдвард Мунк' },
+    { value: 'Эжен Делакруа', label: 'Эжен Делакруа' },
+    { value: 'Винсент Ван Гог', label: 'Винсент Ван Гог' },
+    { value: 'Иероним Босх', label: 'Иероним Босх' },
+    { value: 'Иван Константинович Айвазовский', label: 'Иван Константинович Айвазовский' },
+    { value: 'Сандро Боттичелли', label: 'Сандро Боттичелли' },
+    { value: 'Альбрехт Дюрер', label: 'Альбрехт Дюрер' },
+    { value: 'Рембрандт', label: 'Рембрандт' },
+    { value: 'Сальвадор Дали', label: 'Сальвадор Дали' },
+    { value: 'Паоло Уччелло', label: 'Паоло Уччелло' },
+    { value: 'Эдгар Дега', label: 'Эдгар Дега' },
+    { value: 'Рембрандт Харменс ван Рейн', label: 'Рембрандт Харменс ван Рейн' },
+    { value: 'Клод Моне', label: 'Клод Моне' },
+    { value: 'Поль Сезанн', label: 'Поль Сезанн' },
+    { value: 'Каспар Давид Фридрих', label: 'Каспар Давид Фридрих' },
+    { value: 'Мэри Кассат', label: 'Мэри Кассат' },
   ];
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: 'rgba(197,147,147,0.8)',
+      borderRadius: '8px',
+      height: '40px',
+      cursor: 'pointer',
+      color: '#fff',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: '#fff',
+      fontWeight: 'bold',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? '#fff' : '#333',
+      backgroundColor: state.isSelected ? '#007bff' : '#fff',
+      ':hover': {
+        backgroundColor: state.isSelected ? '#007bff' : '#f2f2f2',
+        color: state.isSelected ? '#fff' : '#333',
+      },
+    }),
+  };
 
   const handleSelectYear = (selectedOption) => {
     setSelectedYear(selectedOption.value);
@@ -137,6 +188,11 @@ const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedSty
   const handleSelectStyle = (selectedOption) => {
     setSelectedStyle(selectedOption.value);
     localStorage.setItem('selectedStyle', selectedOption.value);
+  };
+
+  const handleSelectArtist = (selectedOption) => {
+    setSelectedArtist(selectedOption.label);
+    localStorage.setItem('selectedArtist', selectedOption.value);
   };
 
   return (
@@ -149,6 +205,7 @@ const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedSty
               options={yearOptions}
               value={{ value: selectedYear, label: selectedYear }}
               onChange={handleSelectYear}
+              styles={customStyles}
             />
           </li>
           <li>
@@ -157,14 +214,16 @@ const Settings = ({ selectedYear, setSelectedYear, selectedStyle, setSelectedSty
               options={styleOptions}
               value={{ value: selectedStyle, label: selectedStyle }}
               onChange={handleSelectStyle}
+              styles={customStyles}
             />
           </li>
           <li>
             <Select
               id="artist-select"
               options={artistOptions}
-              //   value={{ value: selectedStyle, label: selectedStyle }}
-              //   onChange={handleSelectStyle}
+              value={{ value: selectedArtist, label: selectedArtist }}
+              onChange={handleSelectArtist}
+              styles={customStyles}
             />
           </li>
         </ul>

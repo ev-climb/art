@@ -5,21 +5,13 @@ import Image from './Image';
 import Info from './Info';
 import Loading from './Loading';
 
-const Home = ({ clicked, setClicked, selectedYear, selectedStyle }) => {
+const Home = ({ clicked, setClicked, selectedYear, selectedStyle, selectedArtist }) => {
   const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/';
   const [arts, setArts] = React.useState([]);
   const [allArts, setAllArts] = React.useState([]);
   const [usedArts, setUsedArts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const errorArt = {
-    title: 'Увы!',
-    artist: 'Ничего не найдено',
-    url: '/img/errorArt.jpg',
-    description:
-      'Попробуйте изменить настройки поиска. Кажется, с данными параметрами у нас пока ничего нет.',
-    year: ':-(',
-    years: '',
-  };
+
   const lastArt = {
     title: 'Благодарим за просмотр!',
     artist: 'Пока на этом всё',
@@ -37,7 +29,9 @@ const Home = ({ clicked, setClicked, selectedYear, selectedStyle }) => {
         axios.get(
           `${API_URL}arts?${
             selectedYear && (selectedYear !== 'All years' ? `years=${selectedYear}` : '')
-          }${selectedStyle && (selectedStyle !== 'All styles' ? `&style=${selectedStyle}` : '')}`,
+          }${selectedStyle && (selectedStyle !== 'All styles' ? `&style=${selectedStyle}` : '')}${
+            selectedArtist && (selectedArtist !== 'All artists' ? `&artist=${selectedArtist}` : '')
+          }`,
         ),
       ]);
       if (allArts.length === 0) {

@@ -16,6 +16,9 @@ const App = () => {
   const [selectedStyle, setSelectedStyle] = React.useState(
     localStorage.getItem('selectedStyle') || 'All styles',
   );
+  const [selectedArtist, setSelectedArtist] = React.useState(
+    localStorage.getItem('selectedStyle') || 'All styles',
+  );
 
   return (
     <div className="App">
@@ -39,6 +42,7 @@ const App = () => {
                 setClicked={setClicked}
                 selectedYear={selectedYear}
                 selectedStyle={selectedStyle}
+                selectedArtist={selectedArtist}
               />
             }
           />
@@ -50,6 +54,8 @@ const App = () => {
                 setSelectedYear={setSelectedYear}
                 selectedStyle={selectedStyle}
                 setSelectedStyle={setSelectedStyle}
+                selectedArtist={selectedArtist}
+                setSelectedArtist={setSelectedArtist}
               />
             }
           />

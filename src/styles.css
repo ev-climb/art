@@ -246,7 +246,7 @@ ul {
   line-height: 1.6;
   margin-top: 200px;
 }
-.settingsImage select {
+.settingsImage Select {
   cursor: pointer;
   height: 27px;
   width: 120px;
