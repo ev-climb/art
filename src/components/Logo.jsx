@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Logo = ({ clicked }) => {
   const [onClickLogo, setOnClickLogo] = React.useState(false);
-  console.log(onClickLogo);
+
   return (
     <Link to="/" className="logo-link">
       <div
