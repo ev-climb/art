@@ -2,9 +2,9 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
 import Logo from './components/Logo';
-import Home from './components/Home';
-import Settings from './components/Settings';
-import About from './components/About';
+import Home from './pages/Home';
+import Settings from './pages/Settings';
+import About from './pages/About';
 
 import './styles.css';
 

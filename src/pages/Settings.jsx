@@ -37,6 +37,11 @@ const Settings = ({
     { value: 'street-art', label: 'Street-art' },
     { value: 'surrealism', label: 'Surrealism' },
     { value: 'suprematism', label: 'Suprematism' },
+    { value: 'academicism', label: 'Academicism' },
+    { value: 'naive art', label: 'Naive art' },
+    { value: 'abstractionism', label: 'Abstractionism' },
+    { value: 'neoclassicism', label: 'Neoclassicism' },
+    { value: 'realism', label: 'Realism' },
   ];
   const artistOptions = [
     { value: 'All artists', label: 'All artists' },
@@ -69,6 +74,13 @@ const Settings = ({
     { value: 'Поль Сезанн', label: 'Поль Сезанн' },
     { value: 'Каспар Давид Фридрих', label: 'Каспар Давид Фридрих' },
     { value: 'Мэри Кассат', label: 'Мэри Кассат' },
+    { value: 'Жан-Леон Жером', label: 'Жан-Леон Жером' },
+    { value: 'Пьер Огюст Ренуар', label: 'Пьер Огюст Ренуар' },
+    { value: 'Поль Сезанн', label: 'Поль Сезанн' },
+    { value: 'Анри Руссо', label: 'Анри Руссо' },
+    { value: 'Василий Кандинский', label: 'Василий Кандинский' },
+    { value: 'Илья Репин', label: 'Илья Репин' },
+    { value: 'Караваджо', label: 'Караваджо' },
   ];
   const customStyles = {
     control: (provided) => ({

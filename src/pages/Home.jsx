@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
-import Image from './Image';
-import Info from './Info';
-import Loading from './Loading';
+import Image from '../components/Image';
+import Info from '../components/Info';
+import Loading from '../components/Loading';
 
 const Home = ({ clicked, setClicked, selectedYear, selectedStyle, selectedArtist }) => {
   const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/';
@@ -60,9 +60,6 @@ const Home = ({ clicked, setClicked, selectedYear, selectedStyle, selectedArtist
     setUsedArts((prevUsedArts) => [...prevUsedArts, randomArt]);
     setArts(randomArt);
     setLoading(false);
-    console.log(usedArts, 'usedArts');
-    console.log(filteredArts, 'filteredArts');
-    console.log(allArts, 'allArts');
   }
 
   React.useEffect(() => {
