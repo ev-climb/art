@@ -42,6 +42,8 @@ const Settings = ({
     { value: 'abstractionism', label: 'Abstractionism' },
     { value: 'neoclassicism', label: 'Neoclassicism' },
     { value: 'realism', label: 'Realism' },
+    { value: 'art Nouveau', label: 'Art Nouveau' },
+    { value: 'fauvism', label: 'Fauvism' },
   ];
   const artistOptions = [
     { value: 'All artists', label: 'All artists' },
@@ -81,6 +83,9 @@ const Settings = ({
     { value: 'Василий Кандинский', label: 'Василий Кандинский' },
     { value: 'Илья Репин', label: 'Илья Репин' },
     { value: 'Караваджо', label: 'Караваджо' },
+    { value: 'Джон Уильям Уотерхаус', label: 'Джон Уильям Уотерхаус' },
+    { value: 'Густав Климт', label: 'Густав Климт' },
+    { value: 'Анри Матисс', label: 'Анри Матисс' },
   ];
   const customStyles = {
     control: (provided) => ({
