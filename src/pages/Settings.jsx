@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import axios from 'axios';
 import '../styles.css';
 
 const Settings = ({
@@ -10,83 +11,30 @@ const Settings = ({
   selectedArtist,
   setSelectedArtist,
 }) => {
-  const yearOptions = [
-    { value: 'All years', label: 'All years' },
-    { value: '<1500', label: '<1500' },
-    { value: '1500-1600', label: '1500-1600' },
-    { value: '1600-1700', label: '1600-1700' },
-    { value: '1700-1800', label: '1700-1800' },
-    { value: '1800-1900', label: '1800-1900' },
-    { value: '1900<', label: '1900<' },
-  ];
-  const styleOptions = [
-    { value: 'All styles', label: 'All styles' },
-    { value: 'avantgarde', label: 'Avant-garde' },
-    { value: 'baroque', label: 'Baroque' },
-    { value: 'cubism', label: 'Cubism' },
-    { value: 'expressionism', label: 'Expressionism' },
-    { value: 'impressionism', label: 'Impressionism' },
-    { value: 'modernism', label: 'Modernism' },
-    { value: 'neopop', label: 'Neo-pop' },
-    { value: 'popart', label: 'Pop-art' },
-    { value: 'postimpressionism', label: 'Post-impressionism' },
-    { value: 'postmodernism', label: 'Postmodernism' },
-    { value: 'primitivism', label: 'Primitivism' },
-    { value: 'renaissance', label: 'Renaissance' },
-    { value: 'romanticism', label: 'Romanticism' },
-    { value: 'street-art', label: 'Street-art' },
-    { value: 'surrealism', label: 'Surrealism' },
-    { value: 'suprematism', label: 'Suprematism' },
-    { value: 'academicism', label: 'Academicism' },
-    { value: 'naive art', label: 'Naive art' },
-    { value: 'abstractionism', label: 'Abstractionism' },
-    { value: 'neoclassicism', label: 'Neoclassicism' },
-    { value: 'realism', label: 'Realism' },
-    { value: 'art Nouveau', label: 'Art Nouveau' },
-    { value: 'fauvism', label: 'Fauvism' },
-  ];
-  const artistOptions = [
-    { value: 'All artists', label: 'All artists' },
-    { value: 'Пабло Пикассо', label: 'Пабло Пикассо' },
-    { value: 'Казимир Малевич', label: 'Казимир Малевич' },
-    { value: 'Марсель Дюшан', label: 'Марсель Дюшан' },
-    { value: 'Барнетт Ньюмен', label: 'Барнетт Ньюмен' },
-    { value: 'Ричард Гамильтон', label: 'Ричард Гамильтон' },
-    { value: 'Дэн Флавин', label: 'Дэн Флавин' },
-    { value: 'Джефф Кунс', label: 'Джефф Кунс' },
-    { value: 'Трэйси Эмин', label: 'Трэйси Эмин' },
-    { value: 'Олафур Элиассон', label: 'Олафур Элиассон' },
-    { value: 'Майк Келли', label: 'Майк Келли' },
-    { value: 'Леонардо да Винчи', label: 'Леонардо да Винчи' },
-    { value: 'Микеланджело', label: 'Микеланджело' },
-    { value: 'Рафаэль Санти', label: 'Рафаэль Санти' },
-    { value: 'Эдвард Мунк', label: 'Эдвард Мунк' },
-    { value: 'Эжен Делакруа', label: 'Эжен Делакруа' },
-    { value: 'Винсент Ван Гог', label: 'Винсент Ван Гог' },
-    { value: 'Иероним Босх', label: 'Иероним Босх' },
-    { value: 'Иван Константинович Айвазовский', label: 'Иван Константинович Айвазовский' },
-    { value: 'Сандро Боттичелли', label: 'Сандро Боттичелли' },
-    { value: 'Альбрехт Дюрер', label: 'Альбрехт Дюрер' },
-    { value: 'Рембрандт', label: 'Рембрандт' },
-    { value: 'Сальвадор Дали', label: 'Сальвадор Дали' },
-    { value: 'Паоло Уччелло', label: 'Паоло Уччелло' },
-    { value: 'Эдгар Дега', label: 'Эдгар Дега' },
-    { value: 'Рембрандт Харменс ван Рейн', label: 'Рембрандт Харменс ван Рейн' },
-    { value: 'Клод Моне', label: 'Клод Моне' },
-    { value: 'Поль Сезанн', label: 'Поль Сезанн' },
-    { value: 'Каспар Давид Фридрих', label: 'Каспар Давид Фридрих' },
-    { value: 'Мэри Кассат', label: 'Мэри Кассат' },
-    { value: 'Жан-Леон Жером', label: 'Жан-Леон Жером' },
-    { value: 'Пьер Огюст Ренуар', label: 'Пьер Огюст Ренуар' },
-    { value: 'Поль Сезанн', label: 'Поль Сезанн' },
-    { value: 'Анри Руссо', label: 'Анри Руссо' },
-    { value: 'Василий Кандинский', label: 'Василий Кандинский' },
-    { value: 'Илья Репин', label: 'Илья Репин' },
-    { value: 'Караваджо', label: 'Караваджо' },
-    { value: 'Джон Уильям Уотерхаус', label: 'Джон Уильям Уотерхаус' },
-    { value: 'Густав Климт', label: 'Густав Климт' },
-    { value: 'Анри Матисс', label: 'Анри Матисс' },
-  ];
+  const [yearOptions, setYearOptions] = React.useState([]);
+  const [styleOptions, setStyleOptions] = React.useState([]);
+  const [artistOptions, setArtistOptions] = React.useState([]);
+  const API_URL = 'https://63f1c2684f17278c9a1961ec.mockapi.io/';
+  React.useEffect(() => {
+    async function fetchData() {
+      try {
+        const [yearsRes, stylesRes, artistsRes] = await Promise.all([
+          axios.get(`${API_URL}yearOptions`),
+          axios.get(`${API_URL}styleOptions`),
+          axios.get(`${API_URL}artistOptions`),
+        ]);
+
+        setYearOptions(yearsRes.data);
+        setStyleOptions(stylesRes.data);
+        setArtistOptions(artistsRes.data);
+      } catch (error) {
+        alert('Какие-то проблемы на сервере :(');
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
   const customStyles = {
     control: (provided) => ({
       ...provided,
