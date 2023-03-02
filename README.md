@@ -1,6 +1,6 @@
 # Arts-GURU
 
-https://ev-climb.github.io/sneakers/
+https://ev-climb.github.io/art/
 
 ## Описание проекта
 
