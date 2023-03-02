@@ -10,7 +10,7 @@ https://ev-climb.github.io/art/
 - фильтрация по годам, стилям и художникам
 - адаптивный дизайн
 
-![Screen](https://github.com/ev-climb/sneakers/blob/master/sneakers.png)
+![Screen](https://github.com/ev-climb/art/blob/master/screen.png)
 
 ## Stack:
 - ReactJS + хуки
