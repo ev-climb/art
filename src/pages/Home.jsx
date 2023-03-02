@@ -15,7 +15,7 @@ const Home = ({ clicked, setClicked, selectedYear, selectedStyle, selectedArtist
   const lastArt = {
     title: 'Благодарим за просмотр!',
     artist: 'Пока на этом всё',
-    url: '/img/end.jpg',
+    url: './img/end.jpg',
     description:
       'Вы просмотрели всю подборку. Измените настройки поиска или просмотрите коллекцию заново.',
     year: ':-',

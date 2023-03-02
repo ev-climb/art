@@ -5,7 +5,7 @@ const Logo = ({ clicked }) => {
   const [onClickLogo, setOnClickLogo] = React.useState(false);
 
   return (
-    <Link to="/" className="logo-link">
+    <Link to={process.env.PUBLIC_URL + '/'} className="logo-link">
       <div
         className="logo"
         onClick={() => {

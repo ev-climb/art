@@ -17,7 +17,7 @@ const App = () => {
     localStorage.getItem('selectedStyle') || 'All styles',
   );
   const [selectedArtist, setSelectedArtist] = React.useState(
-    localStorage.getItem('selectedArtist') || 'All styles',
+    localStorage.getItem('selectedArtist') || 'All artists',
   );
 
   return (
@@ -35,7 +35,8 @@ const App = () => {
         <Logo clicked={clicked} />
         <Routes>
           <Route
-            path="/"
+            path={process.env.PUBLIC_URL + '/'}
+            exact
             element={
               <Home
                 clicked={clicked}
@@ -48,6 +49,7 @@ const App = () => {
           />
           <Route
             path="/settings"
+            exact
             element={
               <Settings
                 selectedYear={selectedYear}
@@ -59,7 +61,7 @@ const App = () => {
               />
             }
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" exact element={<About />} />
         </Routes>
         <span className="copyright">Ⓒ Evseev</span>
       </div>
