@@ -5,7 +5,7 @@ const Logo = ({ clicked }) => {
   const [onClickLogo, setOnClickLogo] = React.useState(false);
 
   return (
-    <Link to={process.env.PUBLIC_URL + '/'} className="logo-link">
+    <Link to="/" className="logo-link">
       <div
         className="logo"
         onClick={() => {
@@ -13,12 +13,19 @@ const Logo = ({ clicked }) => {
           setTimeout(() => setOnClickLogo(false), 1000);
         }}
       >
-        <div className={`logo-left ${clicked || onClickLogo ? 'logo-left-animation-on' : ''}`}>
+        {/* <div className={`logo-left ${clicked || onClickLogo ? 'logo-left-animation-on' : ''}`}>
           <span> ARTS</span>
         </div>
         <div className={`logo-right ${clicked || onClickLogo ? 'logo-right-animation-on' : ''}`}>
           GURU
-        </div>
+        </div> */}
+
+        <div
+          className={`logo-left ${clicked || onClickLogo ? 'logo-left-animation-on' : ''}`}
+        ></div>
+        <div
+          className={`logo-right ${clicked || onClickLogo ? 'logo-right-animation-on' : ''}`}
+        ></div>
       </div>
     </Link>
   );

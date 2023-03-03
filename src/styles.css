@@ -124,27 +124,38 @@ ul {
   transition: background-color 0.4s ease-in-out;
 }
 
-.logo-left {
+/* .logo-left {
   text-align: center;
   width: 50%;
   position: relative;
   font-family: 'Rock Salt', cursive;
+} */
+.logo-left {
+  width: 50%;
+  background-image: url(../public/img/logo-left.svg);
+  background-position: center;
 }
 
-.logo-left span {
+/* .logo-left span {
   left: 13px;
   top: -8px;
   position: absolute;
   color: mediumvioletred;
   font-size: 18px;
-}
+} */
 
-.logo-right {
+/* .logo-right {
   width: 72px;
   background-color: black;
   color: white;
   text-align: center;
   align-self: center;
+} */
+.logo-right {
+  background-image: url(../public/img/logo-right.svg);
+  width: 72px;
+  background-position: center;
+  background-position-y: 44%;
 }
 .logo:hover {
   background-color: rgb(254, 206, 255);

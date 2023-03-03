@@ -69,17 +69,17 @@ const Settings = ({
 
   const handleSelectYear = (selectedOption) => {
     setSelectedYear(selectedOption.label);
-    localStorage.setItem('selectedYear', selectedOption.value);
+    localStorage.setItem('selectedYear', selectedOption.label);
   };
 
   const handleSelectStyle = (selectedOption) => {
     setSelectedStyle(selectedOption.label);
-    localStorage.setItem('selectedStyle', selectedOption.value);
+    localStorage.setItem('selectedStyle', selectedOption.label);
   };
 
   const handleSelectArtist = (selectedOption) => {
     setSelectedArtist(selectedOption.label);
-    localStorage.setItem('selectedArtist', selectedOption.value);
+    localStorage.setItem('selectedArtist', selectedOption.label);
   };
 
   return (

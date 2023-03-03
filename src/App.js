@@ -35,7 +35,7 @@ const App = () => {
         <Logo clicked={clicked} />
         <Routes>
           <Route
-            path={process.env.PUBLIC_URL + '/'}
+            path="/"
             exact
             element={
               <Home
