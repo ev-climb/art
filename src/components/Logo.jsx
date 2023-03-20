@@ -13,13 +13,6 @@ const Logo = ({ clicked }) => {
           setTimeout(() => setOnClickLogo(false), 1000);
         }}
       >
-        {/* <div className={`logo-left ${clicked || onClickLogo ? 'logo-left-animation-on' : ''}`}>
-          <span> ARTS</span>
-        </div>
-        <div className={`logo-right ${clicked || onClickLogo ? 'logo-right-animation-on' : ''}`}>
-          GURU
-        </div> */}
-
         <div
           className={`logo-left ${clicked || onClickLogo ? 'logo-left-animation-on' : ''}`}
         ></div>

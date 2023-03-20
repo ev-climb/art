@@ -67,7 +67,7 @@ const Home = ({ clicked, setClicked, selectedYear, selectedStyle, selectedArtist
   }, []);
 
   React.useEffect(() => {
-    if (allArts.length != 0) {
+    if (allArts.length !== 0) {
       getArt();
     } else {
       setArts(lastArt);
